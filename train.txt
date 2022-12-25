@@ -1,0 +1,123 @@
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv("C:/Users/RAMBO/Downloads/archive (2)/train.csv")
+df.head()
+
+df.shape
+
+new_df = df.drop(['Ticket','Fare'],axis=1)
+new_df.head()
+
+new_df.shape
+
+df.drop(range(0,100),axis=0,inplace=True)
+
+df.shape
+
+df.head()
+
+# Removing Duplicate Rows
+
+df = pd.read_csv("C:/Users/RAMBO/Downloads/archive (2)/train.csv")
+df.head()
+
+df.duplicated()
+
+df.duplicated().sum()
+
+df.loc[df.duplicated(),:]
+
+df.loc[df.duplicated(keep=False),:]
+
+df.loc[df.duplicated(keep='last'),:]
+
+df.index
+
+df.columns
+
+df.rename(columns={'Name':'Full_name','Fare':'Tickel_price'},inplace=True)
+
+df.head()
+
+new_col=['c1','c2','c3','c4','c5','c6','c7','c8','c9','c10','c11','c12']
+df.columns = new_col[:]
+df.head()
+
+# Dropping Missing values
+
+df.isnull()
+
+df.isnull().any()
+
+df.isnull().sum()
+
+df.notnull().sum()
+
+df.shape
+
+df = pd.read_csv("C:/Users/RAMBO/Downloads/archive (2)/train.csv")
+df.head()
+
+df.drop('Cabin',axis=1).dropna().shape
+
+
+df.head()
+
+df.drop('Cabin',axis=1).dropna(inplace=True)df.drop(how='all',axis=1).shape
+
+df.drop(how='all').shape
+
+df.drop(how='all',axis=1).shape
+
+df.dropna(subset=['Age','Cabin']).shape
+
+df.head()
+
+# filling in Missing values
+
+df.fillna(0)
+
+df['Age'].fillna(df['Age'].mean())
+
+df.head()
+
+df['Embarked'].value_counts(dropna = False)
+
+df['Embarked'].fillna(value='Noport infor',inplace=True)
+
+df.head()
+
+# Creating Dummy variable
+
+df = pd.read_csv("C:/Users/RAMBO/Downloads/archive (2)/train.csv")
+df.head()
+
+df.head()
+
+df['gender_female']=df['Sex'].map({'male':0,'female':1})
+
+df.drop({'Sex'},axis=1,inplace= True)
+
+df
+
+pd.get_dummies(df,columns=['Sex'])
+
+new_df = pd.get_dummies(df,columns=['Sex'],drop_first=True)
+
+new_df.head(6)
+
+df['Embarked'].unique()
+
+df.dropna(subset=['Embarked'],inplace=True)
+
+df
+
+new_df.to_csv('output1.csv')
+
+new_df.to_csv('output1.csv',index = False)
+
+new_df.to_csv('output1.csv',index = False,header = None)
+
+df
+
